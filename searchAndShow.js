@@ -4,7 +4,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function fetchCards(url, appendTo) {
+export async function searchAndShow(url, appendTo) {
     console.log(1);
     const gotten = await getAllDataFromCall(url);
     // main.innerHTML = '';
@@ -28,27 +28,3 @@ async function fetchCards(url, appendTo) {
     }
     
 }
-
-
-function deckMakeSetup() {
-    
-    const myForm = document.getElementById('getACard');
-    // const cardNames = document.getElementById('cardName')
-
-    // 2. Add an event listener for the 'submit' event
-    myForm.addEventListener('submit', function(event) {
-        const possCards = document.getElementById('possCards');
-        // Prevent the default form submission (page reload)
-        event.preventDefault();
-        console.log(document.getElementById('cardName').value);
-        possCards.innerHTML = '';
-        // console.log('a');
-        fetchCards(
-            `https://api.scryfall.com/cards/search?q=${document.getElementById('cardName').value}&unique=cards&as=grid&order=name`,
-            possCards
-        );
-
-    });
-}
-
-deckMakeSetup();
