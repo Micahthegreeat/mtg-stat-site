@@ -19,3 +19,17 @@ export async function getAllDataFromCall(url) {
     }
     return totalListOfSets;
 }
+
+export function makeAnImage(data) {
+    const image = document.createElement("img");
+    if(data.image_uris) {
+        image.src = data.image_uris.normal;
+    }
+    else {
+        image.src = data.card_faces[0].image_uris.normal;
+    }
+    image.width = 300;
+    image.style.margin = '5px';
+    image.alt = `Picture of ${data.name}`;
+    return image;
+}
