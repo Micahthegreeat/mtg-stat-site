@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .red-box {
+        border: 1px solid red;
+        padding: 10px; /* Optional: adds space between the content and the border */
+        margin: 10px;  /* Optional: adds space around the div */
+    }
+    </style>
+</head>
+<body>
+    <main>
+        <form id="getACard">
+            <label for="cardName">Card name:</label>
+            <input type="text" id="cardName" name="cardName">
+            <button type="submit">Submit</button>
+        </form>
+        <div id="possCards"></div>
+        <hr style="width: 90%; border: 3px solid red; background-color: red;">
+        <div id="cardsInDeck"></div>
+        <hr style="width: 90%; border: 3px solid green; background-color: green;">
+        <div id="stats"></div>
+    </main>
+    <script type='module' src="./searchAndShow.js"></script>
+</body>
+</html>
