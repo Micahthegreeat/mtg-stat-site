@@ -1,0 +1,17 @@
+<div>
+  <label for="barSlider">Graph Length:</label>
+  <input type="range" id="barSlider" min="0" max="100" value="50">
+</div>
+
+<div id="graphContainer" style="margin-top:10px; width:100px; height:30px; background:#eee;">
+  <div id="bar" style="height:100%; width:50px; background:#4caf50;"></div>
+</div>
+
+<script>
+const slider = document.getElementById('barSlider');
+const bar = document.getElementById('bar');
+
+slider.addEventListener('input', () => {
+  bar.style.width = slider.value + 'px';
+});
+</script>

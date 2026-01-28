@@ -1,8 +1,10 @@
 import { makeAnImage } from './helper.js';
+import { addToStats, subFromStats } from './stats/mainStats.js';
 
 
 
 function subFromDeck(cardObject) {
+    subFromStats(cardObject);
     const quantity = parseInt(document.getElementById(`q:${cardObject.name}`).innerHTML) - 1;
     if(quantity == 0){
         document.getElementById(cardObject.name).remove();
@@ -12,6 +14,7 @@ function subFromDeck(cardObject) {
 }
 
 export function addToDeck(cardObject) {
+    addToStats(cardObject);
 
 
     if(document.getElementById(cardObject.name)) {

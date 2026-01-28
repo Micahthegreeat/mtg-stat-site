@@ -1,4 +1,5 @@
 import { searchAndShow } from './searchAndShow.js';
+import { setUpStats } from './stats/mainStats.js';
 
 const myForm = document.getElementById('getACard');
 
@@ -20,3 +21,5 @@ clearSearch.addEventListener('click', function(event) {
     const possCards = document.getElementById('possCards');
     possCards.innerHTML = '';
 });
+
+setUpStats();
