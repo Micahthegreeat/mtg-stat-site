@@ -11,7 +11,6 @@ export async function addToStats(cardData) {
     allCards.push(cardData);
 
     // odds of playing a card turn 1
-    console.log('should move graph');
     oneStat(parentElement, 'odds of playing a card turn 1', oneTurn(allCards));
 
 
@@ -19,7 +18,15 @@ export async function addToStats(cardData) {
 }
 
 export async function subFromStats(cardData) {
-    
+    const index = allCards.indexOf(cardData); // Find the index of the item
+    if (index > -1) {
+    allCards.splice(index, 1); // Remove 1 element at the found index
+    } else {
+        throw new error("you broke it :(");
+    }
+
+    // odds of playing a card turn 1
+    oneStat(parentElement, 'odds of playing a card turn 1', oneTurn(allCards));
 }
 
 export async function setUpStats() {
