@@ -28,7 +28,7 @@ export function makeAnImage(data) {
     else {
         image.src = data.card_faces[0].image_uris.normal;
     }
-    image.width = 300;
+    image.width = 200;
     image.style.margin = '5px';
     image.alt = `Picture of ${data.name}`;
     return image;
