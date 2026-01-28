@@ -3,11 +3,11 @@ import { makeAnImage } from './helper.js';
 
 
 function subFromDeck(cardObject) {
-    const quantity = parseInt(document.getElementById(`q:${cardObject.name}`).innerHTML) - 1
+    const quantity = parseInt(document.getElementById(`q:${cardObject.name}`).innerHTML) - 1;
     if(quantity == 0){
         document.getElementById(cardObject.name).remove();
     } else {
-        document.getElementById(`q:${cardObject.name}`).innerHTML = quantity
+        document.getElementById(`q:${cardObject.name}`).innerHTML = quantity;
     }
 }
 
