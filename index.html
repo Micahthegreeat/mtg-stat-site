@@ -26,6 +26,12 @@
         <hr style="width: 90%; border: 3px solid green; background-color: green;">
         <div id="stats"></div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+
+    <script>
+        fetch('/README.md').then(r=>r.text()).then(m=>possCards.innerHTML=new showdown.Converter().makeHtml(m));
+    </script>
     <script type='module' src="./main.js"></script>
+
 </body>
 </html>
