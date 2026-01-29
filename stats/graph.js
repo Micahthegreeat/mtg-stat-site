@@ -1,7 +1,9 @@
+const round2 = n => Number.isInteger(n) ? n : Math.round(n * 100) / 100;
+
 export function oneStat(parentElement, name, chance) {
     
     if(document.getElementById(name)) {
-        document.getElementById(`${name} odds`).innerHTML = `${chance}%`;
+        document.getElementById(`${name} odds`).innerHTML = `${round2(chance)}%`;
         document.getElementById(name).style.width = `${chance}%`;
         return;
     }
@@ -10,7 +12,7 @@ export function oneStat(parentElement, name, chance) {
     nameHolder.innerText = name;
 
     const chanceHolder = document.createElement('p');
-    chanceHolder.innerText = `${chance}%`;
+    chanceHolder.innerText = `${round2(chance)}%`;
     chanceHolder.id = `${name} odds`;
 
     const outterGraphPart = document.createElement('div');

@@ -11,7 +11,7 @@ export async function addToStats(cardData) {
     allCards.push(cardData);
 
     // odds of playing a card turn 1
-    oneStat(parentElement, 'odds of playing a card turn 1', oneTurn(allCards));
+    oneStat(parentElement, 'odds of playing a creature turn 1', oneTurn(allCards));
 
 
 
@@ -26,12 +26,12 @@ export async function subFromStats(cardData) {
     }
 
     // odds of playing a card turn 1
-    oneStat(parentElement, 'odds of playing a card turn 1', oneTurn(allCards));
+    oneStat(parentElement, 'odds of playing a creature turn 1', oneTurn(allCards));
 }
 
 export async function setUpStats() {
     parentElement = document.getElementById('stats');
 
-    oneStat(parentElement, 'odds of playing a card turn 1', 0);
+    oneStat(parentElement, 'odds of playing a creature turn 1', 0);
 
 }

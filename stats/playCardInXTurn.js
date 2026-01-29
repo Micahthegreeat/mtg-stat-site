@@ -1,6 +1,5 @@
 const colors = ['W', 'U', 'B', 'R', 'G'];
 export function oneTurn(cardsData) {
-    console.log(cardsData);
     const lands = {
         W: 0,
         U: 0,
@@ -24,16 +23,57 @@ export function oneTurn(cardsData) {
             oneManaCards[card.mana_cost[1]] ++;
         }
     }
-
     //actual logic here
-    const returning = oddsGetting2Cards(7, cardsData.length, [oneManaCards.W], [lands.W]);
-    if(returning) {
-        return 100 * returning;
+    
+    let returning = 0;
+
+    function combinations(arr, k) {
+        const result = [];
+        function backtrack(start, combo) {
+            if (combo.length === k) {
+                result.push([...combo]);
+                return;
+            }
+            for (let i = start; i < arr.length; i++) {
+                combo.push(arr[i]);
+                backtrack(i + 1, combo);
+                combo.pop();
+            }
+        }
+        backtrack(0, []);
+        return result;
     }
-    return 0;
+
+    // add odds of getting one
+    for (const combo of combinations(colors, 1)) {
+        const cardsAmtA = combo.map(c => oneManaCards[c]);
+        const cardsAmtB = combo.map(c => lands[c]);
+        const odds = oddsGetting2Cards(7, cardsData.length, cardsAmtA, cardsAmtB);
+        returning += odds;
+    }
+
+    // subtract odds of getting two
+    for (let k = 2; k <= 5; k++) { // 2, 3, 4-color combos
+        const combos = combinations(colors, k);
+        for (const combo of combos) {
+            const cardsAmtA = combo.map(c => oneManaCards[c]);
+            const cardsAmtB = combo.map(c => lands[c]);
+            const odds = oddsGetting2Cards(7, cardsData.length, cardsAmtA, cardsAmtB);
+            returning -= odds;
+        }
+    }
+    
+    return returning * 100;
 }
 
 function oddsGetting2Cards(cardsDrawing, totalCards, cardsAmtA, cardsAmtB) {
+    if (cardsDrawing > 0 && cardsDrawing >= totalCards) {
+        for (let i = 0; i < cardsAmtA.length; i++) {
+            if (cardsAmtA[i] <= 0 || cardsAmtB[i] <= 0) return 0;
+        }
+        return 1;
+    }
+    // console.log(`cardsDrawing: ${cardsDrawing}, totalCards: ${totalCards}, cardsAmtA: ${cardsAmtA[0]}, cardsAmtB: ${cardsAmtB[0]}`);
     const C = (n, k) => {
         let r = 1;
         for (let i = 1; i <= k; i++) r = r * (n - k + i) / i;
@@ -42,6 +82,7 @@ function oddsGetting2Cards(cardsDrawing, totalCards, cardsAmtA, cardsAmtB) {
 
     const total = C(totalCards, cardsDrawing);
     let probability = 1;
+
 
     for (let i = 0; i < cardsAmtA.length; i++) {
         const a = cardsAmtA[i];
@@ -55,5 +96,8 @@ function oddsGetting2Cards(cardsDrawing, totalCards, cardsAmtA, cardsAmtB) {
         probability *= pairProb;
     }
 
-    return probability;
+    if(probability) {
+        return probability;
+    }
+    return 0;
 }
