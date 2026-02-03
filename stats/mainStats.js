@@ -35,7 +35,9 @@ export async function subFromStats(cardData) {
 
 }
 
-export async function setUpStats(parentElement) {
+export async function setUpStats() {
+    parentElement = document.getElementById('stats');
+
     oneStat(parentElement, 'odds of playing a creature turn 1', 0);
     oneStat(parentElement, 'odds of oppening hand having a creaturn to play turn 1', 0);
 }
