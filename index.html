@@ -11,26 +11,11 @@
         margin: 10px;  /* Optional: adds space around the div */
     }
     </style>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <main>
-        <form id="getACard" style = "display: inline">
-            <label for="cardName">Card name:</label>
-            <input type="text" id="cardName" name="cardName">
-            <button type="submit">Submit</button>
-        </form>
-        <button id = "clearSearch" style = "display: inline">Clear Search</button>
-        <div id="possCards"></div>
-        <hr style="width: 90%; border: 3px solid red; background-color: red;">
-        <div id="cardsInDeck"></div>
-        <hr style="width: 90%; border: 3px solid green; background-color: green;">
-        <div id="stats"></div>
-    </main>
+    <main> </main>
     <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
-
-    <script>
-        fetch('/README.md').then(r=>r.text()).then(m=>possCards.innerHTML=new showdown.Converter().makeHtml(m));
-    </script>
     <script type='module' src="./main.js"></script>
 
 </body>

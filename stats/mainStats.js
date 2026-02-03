@@ -1,5 +1,5 @@
 import { oneStat } from './graph.js';
-import { oneTurn } from './playCardInXTurn.js';
+import { creatureByTurnX } from './playCardInXTurn.js';
 
 
 const allCards = [];
@@ -11,7 +11,9 @@ export async function addToStats(cardData) {
     allCards.push(cardData);
 
     // odds of playing a card turn 1
-    oneStat(parentElement, 'odds of playing a creature turn 1', oneTurn(allCards));
+    oneStat(parentElement, 'odds of playing a creature turn 1', creatureByTurnX(allCards));
+
+    oneStat(parentElement, 'odds of oppening hand having a creaturn to play turn 1', creatureByTurnX(allCards, 0));
 
 
 
@@ -26,12 +28,13 @@ export async function subFromStats(cardData) {
     }
 
     // odds of playing a card turn 1
-    oneStat(parentElement, 'odds of playing a creature turn 1', oneTurn(allCards));
+    oneStat(parentElement, 'odds of playing a creature turn 1', creatureByTurnX(allCards));
+
+    oneStat(parentElement, 'odds of oppening hand having a creaturn to play turn 1', creatureByTurnX(allCards, 0));
+
 }
 
-export async function setUpStats() {
-    parentElement = document.getElementById('stats');
-
+export async function setUpStats(parentElement) {
     oneStat(parentElement, 'odds of playing a creature turn 1', 0);
-
+    oneStat(parentElement, 'odds of oppening hand having a creaturn to play turn 1', 0);
 }

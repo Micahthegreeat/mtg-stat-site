@@ -1,6 +1,14 @@
 const colors = ['W', 'U', 'B', 'R', 'G'];
-export function oneTurn(cardsData) {
+export function creatureByTurnX(cardsData, turnNumber = 1) {
+    let landcount = 0;
     const lands = {
+        W: 0,
+        U: 0,
+        B: 0,
+        R: 0,
+        G: 0
+    };
+    const tapLands = {
         W: 0,
         U: 0,
         B: 0,
@@ -18,8 +26,11 @@ export function oneTurn(cardsData) {
         let card = cardsData[i];
         if(card.type_line.includes('Basic Land')) {
             lands[card.produced_mana[0]] ++;
-        }
-        if(card.cmc === 1 && card.type_line.includes('Creature')) {
+            landcount ++;
+        } else if (card.type_line.includes('Land')) {
+            tapLands[card.produced_mana[0]] ++;
+            landcount ++;
+        }else if(card.cmc === 1 && card.type_line.includes('Creature')) {
             oneManaCards[card.mana_cost[1]] ++;
         }
     }
@@ -48,7 +59,7 @@ export function oneTurn(cardsData) {
     for (const combo of combinations(colors, 1)) {
         const cardsAmtA = combo.map(c => oneManaCards[c]);
         const cardsAmtB = combo.map(c => lands[c]);
-        const odds = oddsGetting2Cards(7, cardsData.length, cardsAmtA, cardsAmtB);
+        const odds = oddsGetting2Cards(turnNumber + 7, cardsData.length, cardsAmtA, cardsAmtB);
         returning += odds;
     }
 

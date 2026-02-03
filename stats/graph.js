@@ -29,10 +29,14 @@ export function oneStat(parentElement, name, chance) {
     innerGraphPart.id = name;
 
     const wrapper = document.createElement('div');
-    wrapper.style.border = "10px";
+    wrapper.style.border = "1px solid #000000";
     wrapper.style.display = 'inline-flex';
     wrapper.style.flexDirection = 'column';
     wrapper.style.alignItems = 'center';
+    wrapper.style.borderRadius = "6px";
+    wrapper.style.padding = "8px";
+    wrapper.className = 'stat';
+    
 
     wrapper.appendChild(nameHolder);
     wrapper.appendChild(chanceHolder);

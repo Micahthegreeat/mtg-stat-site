@@ -1,6 +1,9 @@
 import { searchAndShow } from './searchAndShow.js';
 import { setUpStats } from './stats/mainStats.js';
 
+await fetch('./main.html').then(r => r.text()).then(m => document.querySelector('main').innerHTML = m );
+fetch('/README.md').then(r=>r.text()).then(m=>possCards.innerHTML=new showdown.Converter().makeHtml(m));
+
 const myForm = document.getElementById('getACard');
 
 myForm.addEventListener('submit', function(event) {
