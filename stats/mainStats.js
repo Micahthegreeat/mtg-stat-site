@@ -1,5 +1,6 @@
-import { oneStat } from './graph.js';
-import { creatureByTurnX } from './playCardInXTurn.js';
+const SCRIPT_ROOT = new URL(import.meta.url).origin;
+const { oneStat } = await import(`${SCRIPT_ROOT}/graph.js`);
+const { creatureByTurnX } = await import(`${SCRIPT_ROOT}/playCardInXTurn.js`);
 
 
 const allCards = [];

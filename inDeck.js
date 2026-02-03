@@ -1,5 +1,6 @@
-import { makeAnImage } from './helper.js';
-import { addToStats, subFromStats } from './stats/mainStats.js';
+const SCRIPT_ROOT = new URL(import.meta.url).origin;
+const { makeAnImage } = await import(`${SCRIPT_ROOT}/helper.js`);
+const { addToStats, subFromStats } = await import(`${SCRIPT_ROOT}/stats/mainStats.js`);
 
 
 

@@ -1,5 +1,6 @@
-import { getAllDataFromCall, makeAnImage } from './helper.js';
-import { addToDeck } from './inDeck.js';
+const SCRIPT_ROOT = new URL(import.meta.url).origin;
+const { getAllDataFromCall, makeAnImage } = await import(`${SCRIPT_ROOT}/helper.js`);
+const { addToDeck } = await import(`${SCRIPT_ROOT}/inDeck.js`);
 
 export async function searchAndShow(url, appendTo) {
 

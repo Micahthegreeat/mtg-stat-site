@@ -1,8 +1,9 @@
-import { searchAndShow } from './searchAndShow.js';
-import { setUpStats } from './stats/mainStats.js';
+const SCRIPT_ROOT = new URL(import.meta.url).origin;
+const {searchAndShow } = await import(`${SCRIPT_ROOT}/searchAndShow.js`);
+const { setUpStats } = await import(`${SCRIPT_ROOT}/stats/mainStats.js`);
 
-await fetch('./main.html').then(r => r.text()).then(m => document.querySelector('main').innerHTML = m );
-fetch('/README.md').then(r=>r.text()).then(m=>possCards.innerHTML=new showdown.Converter().makeHtml(m));
+await fetch(`${SCRIPT_ROOT}/main.html`).then(r => r.text()).then(m => document.querySelector('main').innerHTML = m );
+fetch(`${SCRIPT_ROOT}/README.md`).then(r=>r.text()).then(m=>possCards.innerHTML=new showdown.Converter().makeHtml(m));
 
 const myForm = document.getElementById('getACard');
 
