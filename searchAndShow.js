@@ -1,15 +1,16 @@
-const SCRIPT_ROOT = new URL(import.meta.url).origin;
-const { getAllDataFromCall, makeAnImage } = await import(`${SCRIPT_ROOT}/helper.js`);
-const { addToDeck } = await import(`${SCRIPT_ROOT}/inDeck.js`);
+const { getAllDataFromCall, makeAnImage } = await import(`./helper.js`);
+// const { addToDeck } = await import(`./inDeck.js`);
 
-export async function searchAndShow(url, appendTo) {
+export async function searchAndShow(url, appendTo, docObject) {
 
     const gotten = await getAllDataFromCall(url);
-    gotten.sort((a, b) => a.collector_number - b.collector_number);
+    console.log(gotten);
+    // gotten.sort((a, b) => a.collector_number - b.collector_number);
     for(let i = 0; i < gotten.length; i ++) {
         const image = makeAnImage(gotten[i]);
+        
         image.addEventListener('click', function(event) {
-            addToDeck(gotten[i]);
+            docObject.addPicture(image);
         });
         appendTo.appendChild(image);
     }

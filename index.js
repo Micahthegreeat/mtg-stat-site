@@ -1,4 +1,6 @@
-class User {
+const { searchAndShow } = await import(`./searchAndShow.js`);
+
+class doc {
   constructor() {
     const { jsPDF } = window.jspdf;
     this.doc = new jsPDF(
@@ -17,6 +19,9 @@ class User {
   }
 }
 
+const pics = document.getElementById("main");
+
+searchAndShow('pictures.json', pics);
 
 document.getElementById('download-btn').addEventListener('click', () => {
     // Access the jsPDF constructor from the global window object
