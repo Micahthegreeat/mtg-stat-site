@@ -1,4 +1,6 @@
 const { searchAndShow } = await import(`./searchAndShow.js`);
+const { setUpDoc } = await import(`./inDeck.js`);
+
 
 class doc {
   constructor() {
@@ -12,12 +14,16 @@ class doc {
     this.amount = 0;
   }
   addPicture(pictureUrl) {
-    
+    console.log(`adding ${pictureUrl}`);
   }
   removePicture(pictureUrl) {
-    
+    console.log(`removing ${pictureUrl}`);
   }
 }
+
+const pdfdoc = new doc()
+
+setUpDoc(pdfdoc);
 
 const pics = document.getElementById("main");
 

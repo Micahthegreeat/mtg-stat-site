@@ -1,7 +1,7 @@
 const { getAllDataFromCall, makeAnImage } = await import(`./helper.js`);
-// const { addToDeck } = await import(`./inDeck.js`);
+const { addToDeck } = await import(`./inDeck.js`);
 
-export async function searchAndShow(url, appendTo, docObject) {
+export async function searchAndShow(url, appendTo) {
 
     const gotten = await getAllDataFromCall(url);
     console.log(gotten);
@@ -10,7 +10,7 @@ export async function searchAndShow(url, appendTo, docObject) {
         const image = makeAnImage(gotten[i]);
         
         image.addEventListener('click', function(event) {
-            docObject.addPicture(image);
+            addToDeck(gotten[i]);
         });
         appendTo.appendChild(image);
     }
