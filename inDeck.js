@@ -8,7 +8,7 @@ export function setUpDoc(pdfdoc1) {
 }
 
 function subFromDeck(cardObject) {
-    pdfdoc.addPicture(cardObject.image);
+    pdfdoc.removePicture(cardObject.image);
     const quantity = parseInt(document.getElementById(`q:${cardObject.number}`).innerHTML) - 1;
     if(quantity == 0){
         document.getElementById(cardObject.number).remove();

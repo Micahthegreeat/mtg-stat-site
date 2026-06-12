@@ -7,11 +7,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
+    <div id="aboutme"></div>
     <div id = "main"></div>
     <hr>
     <div><div id = "cardsInDeck"></div></div>
     <hr>
     <button id="download-btn">Generate and Download PDF</button>
+    <button id="download-backing-btn">Get a pdf of just the backs of cards</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+    <script> fetch('/README.md').then(r=>r.text()).then(m=>aboutme.innerHTML=new showdown.Converter().makeHtml(m)); </script>
+
 
     <script type = 'module' src = "./index.js"> </script>
     
